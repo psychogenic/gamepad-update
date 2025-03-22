@@ -1,0 +1,3 @@
+[submodule "src/pico_ch32v003_prog"]
+	path = src/pico_ch32v003_prog
+	url = https://github.com/psychogenic/pico_ch32v003_prog.git
