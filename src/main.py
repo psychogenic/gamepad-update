@@ -7,8 +7,8 @@ Replacement main to run gamepad sop
 '''
 
 
-# GamepadFirmwareFile = 'gpfw/firmware2ctrlio456.bin'
-GamepadFirmwareFile = 'gpfw/ch32gamepad.bin'
+GamepadFirmwareFile = 'gpfw/firmware2ctrlio456.bin'
+# GamepadFirmwareFile = 'gpfw/ch32gamepad.bin'
 SkipBurn = False
 
 

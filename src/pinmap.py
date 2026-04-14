@@ -31,3 +31,6 @@ class PinMapTTETR:
 # selected pin mapping default
 PinMapSelected = PinMapTTETR
 
+
+
+

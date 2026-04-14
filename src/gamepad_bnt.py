@@ -65,7 +65,7 @@ def run_test(db:BareDemoboard, verbose_debug:bool=False):
             numPacketsRcvd += 1
             if db.gamepad.changed_value:
                 if verbose_debug:
-                    print(f'Packet raw val: {db.gamepad.captured_packet}')
+                    print(f'\nPacket raw val: {db.gamepad.captured_packet:016b}')
                 (ctrl1, ctrl2) = pReader.states(db.gamepad.captured_packet)
                 print("\n", numPacketsRcvd, "\t", 
                       #colors.color(ctrl1.as_str(), 'red'),
