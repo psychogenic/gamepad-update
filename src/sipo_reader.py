@@ -14,8 +14,7 @@ from rp2 import PIO, StateMachine
 from array import array
 
 from gamepad_mem import flush_mem
-
-DEBUG_OUT_PINSTART = 21
+from pinmap import PinMapSelected
 
 @rp2.asm_pio(in_shiftdir=PIO.SHIFT_LEFT,
              sideset_init=(PIO.OUT_LOW, PIO.OUT_LOW, PIO.OUT_LOW, PIO.OUT_LOW))
@@ -87,7 +86,7 @@ class SIPO:
                               # freq=12_000_000,           # 20 MHz sampling rate 
                               in_base=self.clk_pin,  
                               jmp_pin=self.latch_pin,
-                              sideset_base=Pin(DEBUG_OUT_PINSTART)) # LATCH pin 
+                              sideset_base=Pin(PinMapSelected.BidirPinsStart)) # LATCH pin 
         
         
         

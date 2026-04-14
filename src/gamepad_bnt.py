@@ -26,8 +26,9 @@ def wait_for_go(db:BareDemoboard, go_only:bool=False):
         
         if db.triggered_reset:
             db.request_handled()
-            if not go_only:
+            if go_only:
                 return False 
+            return True
             
         tnow = utime.time()
         if (tnow - tlast) >= 1:
@@ -40,7 +41,7 @@ def wait_for_go(db:BareDemoboard, go_only:bool=False):
     
     
     
-def run_test(db:BareDemoboard):
+def run_test(db:BareDemoboard, verbose_debug:bool=False):
      
     outval = 0
     tlast = utime.time()
@@ -63,6 +64,8 @@ def run_test(db:BareDemoboard):
             packTime = utime.time()
             numPacketsRcvd += 1
             if db.gamepad.changed_value:
+                if verbose_debug:
+                    print(f'Packet raw val: {db.gamepad.captured_packet}')
                 (ctrl1, ctrl2) = pReader.states(db.gamepad.captured_packet)
                 print("\n", numPacketsRcvd, "\t", 
                       #colors.color(ctrl1.as_str(), 'red'),
@@ -89,7 +92,7 @@ def run_test(db:BareDemoboard):
 def burn_and_test_loop(db:BareDemoboard, fw_file:str, skip_burn:bool=False):
     
     if not skip_burn:
-        print("Press CLOCK to start burning.")
+        print("Press RESET button on demoboard to start burning.")
         if not wait_for_go(db):
             return 
         db.set_output(1)

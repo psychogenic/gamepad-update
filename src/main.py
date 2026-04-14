@@ -7,7 +7,8 @@ Replacement main to run gamepad sop
 '''
 
 
-GamepadFirmwareFile = 'gpfw/firmware2ctrlio456.bin'
+# GamepadFirmwareFile = 'gpfw/firmware2ctrlio456.bin'
+GamepadFirmwareFile = 'gpfw/ch32gamepad.bin'
 SkipBurn = False
 
 
@@ -28,6 +29,7 @@ flush_mem('before bnt')
 import gamepad_bnt as gpad
 
 flush_mem('before db')
+import gamepad_bnt 
 from gamepad_db import BareDemoboard
 
 flush_mem('before db ctor')
@@ -45,10 +47,13 @@ def mainloop():
             print("SUCCESS! :-)\n\n")
         else:
             print("  There was an issue with this board... ")
-            print("  Press CLOCK or RESET to proceed.")
+            print("  Press RESET to proceed.")
             gpad.wait_for_go(Demoboard)
         
-        
+def run_test(verbose_debug:bool=True):
+    global Demoboard 
+    gamepad_bnt.run_test(Demoboard, verbose_debug)     
+     
 mainloop()
 
 
